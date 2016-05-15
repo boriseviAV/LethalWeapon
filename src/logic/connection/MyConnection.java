@@ -9,14 +9,12 @@ public class MyConnection {
     private static Connection connection;
 
     public static Connection getSimpleConnection() {
-        //See your driver documentation for the proper format of this string :
-        String DB_CONN_STRING = "jdbc:mysql://localhost:3306/lethal_weapon";
-        //Provided by your driver documentation. In this case, a MySql driver is used :
+        String DB_CONN_STRING = "jdbc:mysql://localhost:3306/lethal_weapon?autoReconnect=true&useSSL=false";
         String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
         String USER_NAME = "root";
-        String PASSWORD = "123222";
+        String PASSWORD = "artegor";
 
-        /*if (connection == null) {
+        if (connection == null) {
             try {
                 Class.forName(DRIVER_CLASS_NAME).newInstance();
             } catch (Exception ex) {
@@ -26,20 +24,11 @@ public class MyConnection {
                 connection = DriverManager.getConnection(DB_CONN_STRING, USER_NAME, PASSWORD);
             } catch (SQLException e) {
                 System.err.println("Creating connection failed!");
+                e.printStackTrace();
             }
         }
-        return connection;*/
 
-
-
-
-        try {
-            return DriverManager.getConnection(DB_CONN_STRING, USER_NAME, PASSWORD);
-        } catch (SQLException e) {
-            System.out.println("fgdfgdsfgdfgdfgdfgdfgdfgdfgdfg");
-            e.printStackTrace();
-        }
-        return null;
+        return connection;
     }
 
 }

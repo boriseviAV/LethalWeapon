@@ -13,27 +13,11 @@
   <meta charset="UTF-8">
   <link rel="shortcut icon" type="image/x-icon" href="../resources/images/icon.png">
   <link rel="stylesheet" href="../resources/styles/styles.css" media="all">
-  <script language="JavaScript" type="text/javascript">
-    <!--
-    function clock() {
-      var theDate = new Date();
-      var hours, minutes, seconds;
-      hours = theDate.getHours();
-      hours = (hours < 10) ? "0" + hours : hours;
-      minutes = theDate.getMinutes();
-      minutes = (minutes < 10) ? "0" + minutes : minutes;
-      seconds = theDate.getSeconds();
-      seconds = (seconds < 10) ? "0" + seconds : seconds;
-      var strDate =  hours + ":" + minutes + ":" + seconds;
-      document.forms['clockForm'].clockBox.value=strDate;
-      setTimeout("clock()", 1000);}
-    //-->
-  </script>
 </head>
-<body onLoad="clock()">
+<body>
 
 <div class="header">
-  <a href="index.jsp" class="logo"></a>
+  <a href="/index" class="logo"></a>
 
   <div class="search">
     <form class="search-form">
@@ -56,18 +40,14 @@
 <div class="container">
 
   <div class="menu">
-
-
     <a href="/index"><div class="menuButton">Главная</div></a>
     <a href="/categories"><div class="menuButton">Категории</div></a>
     <a href="/accessories"><div class="menuButton">Аксессуары</div></a>
-    <a href="/collections"><div class="menuButton">Сборники</div></a>
-    <form name="clockForm">Время: <input type="text" name="clockBox" size="10"></form>
+    <a href="/weapon_collections"><div class="menuButton">Сборники</div></a>
   </div>
 
   <div class="container_body">
       <jsp:include page="${requestScope.pageName}"/>
-
   </div>
 
 </div>

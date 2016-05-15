@@ -1,28 +1,30 @@
 package logic.models;
 
-/**
- * Created by VORON on 02.05.2016.
- */
+import java.util.List;
+
 public class WeaponCollection {
-    private int collection_id;
-    private int weapon_id;
+    private int collectionId;
     private String name;
-    private String picture_url;
+    private String pictureURL;
 
-    public int getCollection_id() {
-        return collection_id;
+    private List<WeaponsAndCollections> weaponsAndCollectionsList;
+
+    public WeaponCollection(int collectionId, String name, String pictureURL) {
+        this(name, pictureURL);
+        this.collectionId = collectionId;
     }
 
-    public void setCollection_id(int collection_id) {
-        this.collection_id = collection_id;
+    public WeaponCollection(String name, String pictureURL) {
+        this.name = name;
+        this.pictureURL = pictureURL;
     }
 
-    public int getWeapon_id() {
-        return weapon_id;
+    public int getCollectionId() {
+        return collectionId;
     }
 
-    public void setWeapon_id(int weapon_id) {
-        this.weapon_id = weapon_id;
+    public void setCollectionId(int collectionId) {
+        this.collectionId = collectionId;
     }
 
     public String getName() {
@@ -33,11 +35,19 @@ public class WeaponCollection {
         this.name = name;
     }
 
-    public String getPicture_url() {
-        return picture_url;
+    public String getPictureURL() {
+        return pictureURL;
     }
 
-    public void setPicture_url(String picture_url) {
-        this.picture_url = picture_url;
+    public void setPictureURL(String pictureURL) {
+        this.pictureURL = pictureURL;
+    }
+
+    public List<WeaponsAndCollections> getWeaponsAndCollectionsList() {
+        return weaponsAndCollectionsList;
+    }
+
+    public void setWeaponsAndCollectionsList(List<WeaponsAndCollections> weaponsAndCollectionsList) {
+        this.weaponsAndCollectionsList = weaponsAndCollectionsList;
     }
 }

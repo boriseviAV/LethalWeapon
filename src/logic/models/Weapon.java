@@ -1,60 +1,62 @@
 package logic.models;
 
+import java.util.List;
+
 public class Weapon {
-    private int weapon_id;
-    private String model_name;
-    private String holding_way;
+    private int weaponId;
+    private String modelName;
+    private String holdingWay;
     private String country;
     private String range;
     private String caliber;
-    private int ammo_number;
-    private String holder_kind;
+    private int ammoNumber;
     private boolean optics;
     private String stuff;
-    private int collection_id;
-    private String picture_url;
+    private int categoryId;
+    private String pictureURL;
 
-    public Weapon(){
+    private List<WeaponsAndCollections> weaponsAndCollectionsList;
 
+    public Weapon(int weaponId, String modelName, String holdingWay, String country, String range, String caliber, int ammoNumber, boolean optics, String stuff, int categoryId, String pictureURL) {
+        this(modelName, holdingWay, country, range, caliber, ammoNumber, optics, stuff, pictureURL);
+        this.weaponId = weaponId;
+        this.categoryId = categoryId;
     }
 
-    public Weapon(int weapon_id, String model_name, String holding_way, String country, String range, String caliber, int ammo_number, String holder_kind, boolean optics, String stuff, int collection_id, String picture_url) {
-        this.weapon_id = weapon_id;
-        this.model_name = model_name;
-        this.holding_way = holding_way;
+    public Weapon(String modelName, String holdingWay, String country, String range, String caliber, int ammoNumber, boolean optics, String stuff, String pictureURL) {
+        this.modelName = modelName;
+        this.holdingWay = holdingWay;
         this.country = country;
         this.range = range;
         this.caliber = caliber;
-        this.ammo_number = ammo_number;
-        this.holder_kind = holder_kind;
+        this.ammoNumber = ammoNumber;
         this.optics = optics;
         this.stuff = stuff;
-        this.collection_id = collection_id;
-        this.picture_url = picture_url;
+        this.pictureURL = pictureURL;
     }
 
-    public int getWeapon_id() {
-        return weapon_id;
+    public int getWeaponId() {
+        return weaponId;
     }
 
-    public void setWeapon_id(int weapon_id) {
-        this.weapon_id = weapon_id;
+    public void setWeaponId(int weaponId) {
+        this.weaponId = weaponId;
     }
 
-    public String getModel_name() {
-        return model_name;
+    public String getModelName() {
+        return modelName;
     }
 
-    public void setModel_name(String model_name) {
-        this.model_name = model_name;
+    public void setModelName(String modelName) {
+        this.modelName = modelName;
     }
 
-    public String getHolding_way() {
-        return holding_way;
+    public String getHoldingWay() {
+        return holdingWay;
     }
 
-    public void setHolding_way(String holding_way) {
-        this.holding_way = holding_way;
+    public void setHoldingWay(String holdingWay) {
+        this.holdingWay = holdingWay;
     }
 
     public String getCountry() {
@@ -81,20 +83,12 @@ public class Weapon {
         this.caliber = caliber;
     }
 
-    public int getAmmo_number() {
-        return ammo_number;
+    public int getAmmoNumber() {
+        return ammoNumber;
     }
 
-    public void setAmmo_number(int ammo_number) {
-        this.ammo_number = ammo_number;
-    }
-
-    public String getHolder_kind() {
-        return holder_kind;
-    }
-
-    public void setHolder_kind(String holder_kind) {
-        this.holder_kind = holder_kind;
+    public void setAmmoNumber(int ammoNumber) {
+        this.ammoNumber = ammoNumber;
     }
 
     public boolean isOptics() {
@@ -113,19 +107,27 @@ public class Weapon {
         this.stuff = stuff;
     }
 
-    public int getCollection_id() {
-        return collection_id;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCollection_id(int collection_id) {
-        this.collection_id = collection_id;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public String getPicture_url() {
-        return picture_url;
+    public String getPictureURL() {
+        return pictureURL;
     }
 
-    public void setPicture_url(String picture_url) {
-        this.picture_url = picture_url;
+    public void setPictureURL(String pictureURL) {
+        this.pictureURL = pictureURL;
+    }
+
+    public List<WeaponsAndCollections> getWeaponsAndCollectionsList() {
+        return weaponsAndCollectionsList;
+    }
+
+    public void setWeaponsAndCollectionsList(List<WeaponsAndCollections> weaponsAndCollectionsList) {
+        this.weaponsAndCollectionsList = weaponsAndCollectionsList;
     }
 }

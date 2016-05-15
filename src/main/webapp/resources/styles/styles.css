@@ -390,7 +390,7 @@ tr:nth-of-type(odd) {
 }
 
 .reg {
-	width: 50%;
+	width: 100%;
 	height: 45%;
 	font-family: 'crystal';
 	border: solid 1px #00ff00;
@@ -406,7 +406,7 @@ tr:nth-of-type(odd) {
 	background-color: black;
 	color: #00ff00;
 	border: solid 1px #00ff00;
-	width: 80%;
+	width: 40%;
 }
 
 .submit {
@@ -443,4 +443,19 @@ tr:nth-of-type(odd) {
 
 .font-1str{
 	font-family: Arial;
+}
+
+.add-item, .back {
+	color: #00FF00;
+	text-decoration: underline;
+	margin-left: 10%;
+}
+
+.form_div {
+	align-content: center;
+
+}
+
+span {
+	text-decoration: none;
 }
