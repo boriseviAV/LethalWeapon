@@ -113,7 +113,7 @@ public class WeaponsDAO {
                         rs.getBoolean(8),
                         rs.getString(9),
                         rs.getInt(10),
-                        rs.getString(12)
+                        rs.getString(11)
                 );
             }
         } catch (SQLException e) {

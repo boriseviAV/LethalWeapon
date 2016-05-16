@@ -118,6 +118,24 @@ CREATE TABLE IF NOT EXISTS `lethal_weapon`.`weapons_and_collections` (
   DEFAULT CHARACTER SET = utf8;
 
 
+-- -----------------------------------------------------
+-- Table `lethal_weapon`.`users`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `lethal_weapon`.`users` ;
+
+CREATE TABLE IF NOT EXISTS `lethal_weapon`.`users` (
+  `user_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `login` VARCHAR(45) NOT NULL UNIQUE,
+  `password_hash` VARCHAR(200) NOT NULL,
+  `email` VARCHAR(40) NOT NULL,
+  `role` VARCHAR(40) NOT NULL DEFAULT 'user',
+  PRIMARY KEY (`user_id`),
+  UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC))
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO users(login, password_hash, email, role) VALUES ('admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@mail.ru', 'admin');
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

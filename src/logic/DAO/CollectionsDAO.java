@@ -18,6 +18,12 @@ public class CollectionsDAO {
             "     ON w.weapon_id = w_and_col.weapon_id) INNER JOIN weapon_collections w_col " +
             "     ON w_and_col.collection_id = w_col.collection_id " +
             "WHERE w_col.collection_id = ?;";
+    private static final String GET_BY_WEAPON_ID =
+            "SELECT w_col.* " +
+                    "FROM (weapons w INNER JOIN weapons_and_collections w_and_col " +
+                    "     ON w.weapon_id = w_and_col.weapon_id) INNER JOIN weapon_collections w_col " +
+                    "     ON w_and_col.collection_id = w_col.collection_id " +
+                    "WHERE w.weapon_id = ?;";
 
     public List<Weapon> getWeaponsByCollectionId(int id) {
         PreparedStatement preparedStatement;
@@ -86,24 +92,27 @@ public class CollectionsDAO {
         return result;
     }
 
-    public WeaponCollection getCollectionById(int id) {
+    public List<WeaponCollection> getCollectionsByWeaponId(int id) {
         PreparedStatement preparedStatement;
-        WeaponCollection weaponCollection = null;
+        List<WeaponCollection> result = new ArrayList<WeaponCollection>();
         try {
-            preparedStatement = MyConnection.getSimpleConnection().prepareStatement(GET_BY_ID);
+            preparedStatement = MyConnection.getSimpleConnection().prepareStatement(GET_BY_WEAPON_ID);
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
 
-            if (rs.next()) {
-                weaponCollection = new WeaponCollection(
-                        rs.getString(3),
-                        rs.getString(4)
+            while (rs.next()) {
+                result.add(
+                        new WeaponCollection(
+                                rs.getInt(1),
+                                rs.getString(2),
+                                rs.getString(3)
+                        )
                 );
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return weaponCollection;
+        return result;
     }
 
     public int insert(WeaponCollection weaponCollection) {

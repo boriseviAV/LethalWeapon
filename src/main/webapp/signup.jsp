@@ -14,13 +14,21 @@
 <div class="form_div" align="center">
     <form class="reg" method="POST">
         <br>LOGIN:<br>
-        <input type="text" name="login" class="text_field"><br>
+        <label>
+            <input type="text" name="login" class="text_field" required>
+        </label><br>
         <br>E-MAIL:<br>
-        <input type="email" name="email" class="text_field"><br>
+        <label>
+            <input type="email" name="email" class="text_field" required>
+        </label><br>
         <br>PASSWORD:<br>
-        <input type="password" name="pass_hash" class="text_field"><br>
+        <label>
+            <input type="password" name="pass" class="text_field" required>
+        </label><br>
         <br>REPEAT PASSWORD:<br>
-        <input type="password" name="rep_pass_hash" class="text_field"><br><br>
+        <label>
+            <input type="password" name="rep_pass" class="text_field" required>
+        </label><br><br>
 
         <input type="submit" value="SIGN UP" class="submit"><br><br>
     </form>

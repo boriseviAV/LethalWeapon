@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: VORON
@@ -25,16 +26,33 @@
       <input type="submit" value="Search" class="find">
     </form>
   </div>
-  <a href="/signup" class="signup">
-    <div align="center">
-      <span>Sign up</span>
-    </div>
-  </a>
-  <a href="/login" class="signup">
-    <div align="center">
-      <span>Login</span>
-    </div>
-  </a>
+  <c:choose>
+      <c:when test="${sessionScope.currentUser == null}">
+          <a href="/signup" class="signup">
+              <div align="center">
+                  <span>Sign up</span>
+              </div>
+          </a>
+          <a href="/login" class="signup">
+              <div align="center">
+                  <span>Login</span>
+              </div>
+          </a>
+      </c:when>
+      <c:when test="${sessionScope.currentUser != null}">
+          <a class="signup">
+              <div align="center">
+                  <span>${sessionScope.currentUser.login}</span>
+              </div>
+          </a>
+          <a href="/logout" class="signup">
+              <div align="center">
+                  <span>EXIT</span>
+              </div>
+          </a>
+      </c:when>
+  </c:choose>
+
 </div>
 
 <div class="container">

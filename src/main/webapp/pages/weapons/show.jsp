@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: sined
@@ -60,5 +61,41 @@
   </div>
 
   <hr color="#00FF00">
+
+  <span>Сборники, где встречается это оружие:</span><br/>
+
+  <c:set var="itemsInPortion" value="${requestScope.itemsInPortion}"/>
+  <c:set var="portionsNumber" value="${requestScope.weaponCollectionsListPortionsNumber}"/>
+  <c:set var="restNumber" value="${requestScope.weaponCollectionsListRestNumber}"/>
+  <c:if test="${portionsNumber > 0}">
+      <c:forEach var="weaponCollection" items="${requestScope.weaponCollectionsList}">
+          <a href="/show_weapon_collection?id=${weaponCollection.collectionId}">
+              <div class="object-collection" align="center">
+                  <div class="collection">
+                      <img src="${weaponCollection.pictureURL}" width="100%" height="100%" alt="Нет изображения">
+                  </div>
+                  <div>
+                      <span>${weaponCollection.description}</span>
+                  </div>
+              </div>
+          </a>
+      </c:forEach>
+  </c:if>
+
+  <c:set var="weaponCollectionsListSize" value="${requestScope.weaponCollectionsListSize}"/>
+  <c:if test="${restNumber > 0}">
+      <c:forEach var="weaponCollection" items="${requestScope.weaponCollectionsList}" begin="${weaponCollectionsListSize - restNumber}" end="${weaponCollectionsListSize - 1}">
+          <a href="/show_weapon_collection?id=${weaponCollection.collectionId}">
+              <div class="object-collection" align="center">
+                  <div class="collection">
+                      <img src="${weaponCollection.pictureURL}" width="100%" height="100%" alt="Нет изображения">
+                  </div>
+                  <div>
+                      <span>${weaponCollection.name}</span>
+                  </div>
+              </div>
+          </a>
+      </c:forEach>
+  </c:if>
 </body>
 </html>
