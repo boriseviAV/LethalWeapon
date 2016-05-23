@@ -7,7 +7,9 @@
     <div class="add">
         <c:choose>
             <c:when test="${requestScope.addToCol == false}">
-                <a class="add-item" href="/new_category">Добавить категорию</a><br/>
+                <a class="add-item" href="/new_category">Добавить категорию</a>
+                <a class="add-item" href="/categories?method=delete">Очистить</a>
+                <br/>
             </c:when>
             <c:when test="${requestScope.addToCol == true}">
                 <a class="add-item" href="/show_weapon_collection?id=${param.to}">К Сборнику</a><br/><br/>

@@ -5,7 +5,8 @@
 </head>
 <body>
     <div class="add">
-        <a class="add-item" href="/new_accessory">Добавить аксессуар</a><br/>
+        <a class="add-item" href="/new_accessory">Добавить аксессуар</a>
+        <a class="add-item" href="/accessories?method=delete">Очистить</a><br/>
     </div>
 
     <ul class="container">

@@ -11,6 +11,9 @@
         <%@include file="resources/styles/styles.css"%>
     </style>
 
+    <script type="application/javascript">
+        <%@include file="resources/scripts/index.js"%>
+    </script>
 
 </head>
 <body>
@@ -50,6 +53,9 @@
                                 </c:when>
                             </c:choose>
                         </ul>
+                    </li>
+                    <li class="signin-signup">
+                        <div id="clock"></div>
                     </li>
                 </ul>
             </div>

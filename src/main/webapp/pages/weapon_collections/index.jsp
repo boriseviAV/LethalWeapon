@@ -5,7 +5,9 @@
 </head>
 <body>
     <div class="add">
-        <a class="add-item" href="/new_weapon_collection">Добавить сборник</a><br/>
+        <a class="add-item" href="/new_weapon_collection">Добавить сборник</a>
+        <a class="add-item" href="/weapon_collections?method=delete">Очистить</a>
+        <br/>
     </div>
 
     <ul class="container">

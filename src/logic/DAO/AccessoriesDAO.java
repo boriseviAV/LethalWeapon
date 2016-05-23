@@ -48,6 +48,27 @@ public class AccessoriesDAO {
         return result;
     }
 
+    public void deleteAll() {
+        String query = "DELETE FROM lethal_weapon.accessories;";
+        Statement statement = null;
+
+        try {
+            Connection connection = MyConnection.getSimpleConnection();
+            statement = connection.createStatement();
+            statement.execute(query);
+        } catch(SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (statement != null)
+                    statement.close();
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public Accessory getAccessoryById(int id) {
         PreparedStatement preparedStatement;
         Accessory accessory = null;

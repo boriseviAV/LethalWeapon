@@ -11,7 +11,6 @@ import java.util.List;
 public class CollectionsDAO {
 
     private static final String SQL_INSERT = "INSERT INTO weapon_collections(name, picture_url) VALUES(?, ?);";
-    private static final String GET_BY_ID = "SELECT * FROM lethal_weapon.weapon_collections WHERE collection_id = ?;";
     private static final String GET_CHILDREN_BY_ID =
             "SELECT w.* " +
             "FROM (weapons w INNER JOIN weapons_and_collections w_and_col " +
@@ -90,6 +89,29 @@ public class CollectionsDAO {
             }
         }
         return result;
+    }
+
+    public void deleteAll() {
+        String query1 = "DELETE FROM lethal_weapon.weapons_and_collections;";
+        String query2 = "DELETE FROM lethal_weapon.weapon_collections;";
+        Statement statement = null;
+
+        try {
+            Connection connection = MyConnection.getSimpleConnection();
+            statement = connection.createStatement();
+            statement.execute(query1);
+            statement.execute(query2);
+        } catch(SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (statement != null)
+                    statement.close();
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public List<WeaponCollection> getCollectionsByWeaponId(int id) {

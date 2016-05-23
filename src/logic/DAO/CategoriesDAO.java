@@ -47,6 +47,27 @@ public class CategoriesDAO {
         return result;
     }
 
+    public void deleteAll() {
+        String query = "DELETE FROM lethal_weapon.categories;";
+        Statement statement = null;
+
+        try {
+            Connection connection = MyConnection.getSimpleConnection();
+            statement = connection.createStatement();
+            statement.execute(query);
+        } catch(SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (statement != null)
+                    statement.close();
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public Category getCategoryById(int id) {
         PreparedStatement preparedStatement;
         Category category = null;

@@ -170,7 +170,7 @@ ul{
 
 .add-item, .back {
     height: 20px;
-    padding: 6px 9px 4px 9px;
+    padding: 4px 9px 4px 9px;
     border: 1px solid black;
     border-radius: 5px;
     margin-left: 30px;
@@ -259,4 +259,12 @@ ul{
     border: 1px solid black;
     text-align: left;
     padding: 15px;
+}
+
+#clock {
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #253441;
+    border-radius: 3px;
+    padding: 3px;
 }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(value = "/accessories")
@@ -94,16 +95,19 @@ public class AccessoriesServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int itemsInPortion = 6;
+        String methodName = request.getParameter("method");
 
         AccessoriesDAO accessoriesDAO = new AccessoriesDAO();
-        List<Accessory> accessoriesList = accessoriesDAO.getAllAccessories();
+        List<Accessory> accessoriesList;
+
+        if (methodName != null && methodName.equalsIgnoreCase("delete")) {
+            accessoriesDAO.deleteAll();
+            accessoriesList = new ArrayList<Accessory>();
+        }
+        else
+            accessoriesList = accessoriesDAO.getAllAccessories();
 
         request.setAttribute("accessoriesList", accessoriesList);
-        request.setAttribute("accessoriesListSize", accessoriesList.size());
-        request.setAttribute("accessoriesListPortionsNumber", accessoriesList.size() / itemsInPortion);
-        request.setAttribute("accessoriesListRestNumber", accessoriesList.size() % itemsInPortion);
-        request.setAttribute("itemsInPortion", itemsInPortion);
         request.setAttribute("pageName", "pages/accessories/index.jsp");
 
         request.getRequestDispatcher("index.jsp").forward(request, response);
