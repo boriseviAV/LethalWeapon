@@ -72,13 +72,21 @@ public class AccessoriesDAO {
     public int insert(Accessory accessory) {
         int id = 0;
         try {
-            PreparedStatement preparedStatement = MyConnection.getSimpleConnection().prepareStatement(SQL_INSERT);
+            PreparedStatement preparedStatement = MyConnection.getSimpleConnection().prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, accessory.getName());
             preparedStatement.setString(2, accessory.getDescription());
             preparedStatement.setString(3, accessory.getPictureURL());
 
-            id = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
+
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+
+            if (generatedKeys.next()) {
+                id = generatedKeys.getInt(1);
+                accessory.setAccessoryId(id);
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

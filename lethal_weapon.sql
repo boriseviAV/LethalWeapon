@@ -84,7 +84,7 @@ DROP TABLE IF EXISTS `lethal_weapon`.`weapon_collections` ;
 
 CREATE TABLE IF NOT EXISTS `lethal_weapon`.`weapon_collections` (
   `collection_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL DEFAULT NULL,
+  `name` VARCHAR(200) NULL DEFAULT NULL,
   `picture_url` VARCHAR(200) NULL DEFAULT NULL,
   PRIMARY KEY (`collection_id`),
   UNIQUE INDEX `collection_id_UNIQUE` (`collection_id` ASC))

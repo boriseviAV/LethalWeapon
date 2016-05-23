@@ -11,26 +11,29 @@
     <title></title>
 </head>
 <body>
-    <a class="back" href="/accessories">Назад к Списку аксессуаров</a><br/>
-    <div class="item_info" align="center">
-        <div class="avatar">
-            <img src="${requestScope.accessory.pictureURL}" width="100%" height="100%" alt="Нет изображения">
-        </div>
-
-        <div class="parameters">
-            <table border="1" cellspacing="0">
-                <tr>
-                    <td align="right">Название:</td>
-                    <td align="center" class="info1">${requestScope.accessory.name}</td>
-                </tr>
-                <tr>
-                    <td align="right">Описание:</td>
-                    <td align="center" class="info1">${requestScope.accessory.description}</td>
-                </tr>
-            </table>
-        </div>
+    <div class="add">
+        <a class="back" href="/accessories">Назад к Аксессуарам</a><br/>
     </div>
 
-    <hr color="#00FF00">
+    <ul class="container">
+        <li class="item-show">
+            <div class="avatar" align="center">
+                <img src="${requestScope.accessory.pictureURL}" width="80%" height="100%" alt="Нет изображения">
+            </div>
+
+            <div align="center">
+                <table class="parameters" border="1" cellspacing="0">
+                    <tr class="param">
+                        <td width="30%" align="right" class="param">Название:</td>
+                        <td width="70%" align="center" class="param">${requestScope.accessory.name}</td>
+                    </tr>
+                    <tr class="param">
+                        <td align="right" class="param">Описание:</td>
+                        <td align="center" class="param">${requestScope.accessory.description}</td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+    </ul>
 </body>
 </html>

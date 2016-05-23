@@ -3,6 +3,6 @@
 <head>
 </head>
 <body>
-    <jsp:include page="../categories/index.jsp"/>
+
 </body>
 </html>

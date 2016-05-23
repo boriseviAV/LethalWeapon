@@ -70,12 +70,20 @@ public class CategoriesDAO {
     public int insert(Category category) {
         int id = 0;
         try {
-            PreparedStatement preparedStatement = MyConnection.getSimpleConnection().prepareStatement(SQL_INSERT);
+            PreparedStatement preparedStatement = MyConnection.getSimpleConnection().prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, category.getName());
             preparedStatement.setString(2, category.getPictureURL());
 
-            id = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
+
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+
+            if (generatedKeys.next()) {
+                id = generatedKeys.getInt(1);
+                category.setCategoryId(id);
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

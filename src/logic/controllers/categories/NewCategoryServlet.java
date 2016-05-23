@@ -88,7 +88,7 @@ public class NewCategoryServlet extends HttpServlet {
         Category category = new Category(name, pathToImage);
 
         CategoriesDAO categoriesDAO = new CategoriesDAO();
-        int id = categoriesDAO.insert(category);
+        long id = categoriesDAO.insert(category);
 
         if (id == 0)
             request.setAttribute("fail", "Ошибка при добавлении аксессуара!");

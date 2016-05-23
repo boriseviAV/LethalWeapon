@@ -1,73 +1,64 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: VORON
-  Date: 01.05.2016
-  Time: 21:53
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-  <title>LethalWeapon</title>
-  <meta charset="UTF-8">
-  <link rel="shortcut icon" type="image/x-icon" href="../resources/images/icon.png">
-  <link rel="stylesheet" href="../resources/styles/styles.css" media="all">
+    <meta charset="UTF-8">
+    <title>Пушкопедия</title>
+    <link href="resources/styles/styles.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+<div style="display: inline">
+    <div class="header">
+        <div class="header-panel">
+            <div>
+                <ul class="panel">
+                    <li class="logo">
+                        <a href="/index">LETHAL WEAPON</a>
+                    </li>
+                    <li class="search">
+                        <form method="GET" action="/search">
+                            <input name="text" type="text" class="text-search" placeholder="Введите фразу для поиска...">
+                            <input type="submit" class="button-search" value="Поиск">
+                        </form>
+                    </li>
 
-<div class="header">
-  <a href="/index" class="logo"></a>
-
-  <div class="search">
-    <form class="search-form">
-      <input type="search" name="q" placeholder="Поиск по сайту" class="searchText">
-      <input type="submit" value="Search" class="find">
-    </form>
-  </div>
-  <c:choose>
-      <c:when test="${sessionScope.currentUser == null}">
-          <a href="/signup" class="signup">
-              <div align="center">
-                  <span>Sign up</span>
-              </div>
-          </a>
-          <a href="/login" class="signup">
-              <div align="center">
-                  <span>Login</span>
-              </div>
-          </a>
-      </c:when>
-      <c:when test="${sessionScope.currentUser != null}">
-          <a class="signup">
-              <div align="center">
-                  <span>${sessionScope.currentUser.login}</span>
-              </div>
-          </a>
-          <a href="/logout" class="signup">
-              <div align="center">
-                  <span>EXIT</span>
-              </div>
-          </a>
-      </c:when>
-  </c:choose>
-
+                    <li class="signin-signup">
+                        <ul class="ul-signin-signup">
+                            <c:choose>
+                                <c:when test="${sessionScope.currentUser == null}">
+                                    <li class="signin">
+                                        <a href="/login">ВХОД</a>
+                                    </li>
+                                    <li class="signup">
+                                        <a href="/signup">РЕГИСТРАЦИЯ</a>
+                                    </li>
+                                </c:when>
+                                <c:when test="${sessionScope.currentUser != null}">
+                                    <li class="signin">
+                                        <a>${sessionScope.currentUser.name}</a>
+                                    </li>
+                                    <li class="signup">
+                                        <a href="/logout">Выйти</a>
+                                    </li>
+                                </c:when>
+                            </c:choose>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div style="width: 100%" align="center">
+                <ul class="menu">
+                    <li class="ref-li"><a href="/weapon_collections">Сборники</a></li>
+                    <li class="ref-li"><a href="/accessories">Аксессуары</a></li>
+                    <li class="ref-li"><a href="/categories">Категории</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
-
-<div class="container">
-
-  <div class="menu">
-    <a href="/index"><div class="menuButton">Главная</div></a>
-    <a href="/categories"><div class="menuButton">Категории</div></a>
-    <a href="/accessories"><div class="menuButton">Аксессуары</div></a>
-    <a href="/weapon_collections"><div class="menuButton">Сборники</div></a>
-  </div>
-
-  <div class="container_body">
-      <jsp:include page="${requestScope.pageName}"/>
-  </div>
-
+<div class="cont">
+    <jsp:include page="${requestScope.pageName}"/>
 </div>
 
 </body>

@@ -118,12 +118,19 @@ public class CollectionsDAO {
     public int insert(WeaponCollection weaponCollection) {
         int id = 0;
         try {
-            PreparedStatement preparedStatement = MyConnection.getSimpleConnection().prepareStatement(SQL_INSERT);
+            PreparedStatement preparedStatement = MyConnection.getSimpleConnection().prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, weaponCollection.getName());
             preparedStatement.setString(2, weaponCollection.getPictureURL());
 
-            id = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
+
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+
+            if (generatedKeys.next()) {
+                id = generatedKeys.getInt(1);
+                weaponCollection.setCollectionId(id);
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();

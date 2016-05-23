@@ -77,14 +77,21 @@ public class UsersDAO {
         try {
             if (getUserByLogin(user.getLogin()) == null) {
 
-                PreparedStatement preparedStatement = MyConnection.getSimpleConnection().prepareStatement(SQL_INSERT);
+                PreparedStatement preparedStatement = MyConnection.getSimpleConnection().prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
 
                 preparedStatement.setString(1, user.getLogin());
                 preparedStatement.setString(2, user.getPasswordHash());
                 preparedStatement.setString(3, user.getEmail());
                 preparedStatement.setString(4, user.getRole());
 
-                id = preparedStatement.executeUpdate();
+                preparedStatement.executeUpdate();
+
+                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+
+                if (generatedKeys.next()) {
+                    id = generatedKeys.getInt(1);
+                    user.setUserId(id);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -13,16 +13,16 @@
 <body>
     <div class="form_div" align="center">
         <form class="reg" method="POST">
-            <br>LOGIN:<br>
+            <br>ЛОГИН:<br>
             <label>
                 <input type="text" name="login" class="text_field" required>
             </label><br>
-            <br>PASSWORD:<br>
+            <br>ПАРОЛЬ:<br>
             <label>
                 <input type="password" name="pass" class="text_field" required>
             </label><br><br>
 
-            <input type="submit" value="LOGIN" class="submit"><br><br>
+            <input type="submit" value="ВОЙТИ" class="submit"><br><br>
         </form>
     </div>
 </body>

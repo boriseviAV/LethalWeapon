@@ -138,7 +138,14 @@ public class WeaponsDAO {
             preparedStatement.setString(9, weapon.getPictureURL());
             preparedStatement.setInt(10, weapon.getCategoryId());
 
-            id = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
+
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+
+            if (generatedKeys.next()) {
+                id = generatedKeys.getInt(1);
+                weapon.setWeaponId(id);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
