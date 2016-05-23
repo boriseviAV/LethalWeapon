@@ -9,7 +9,7 @@ html, body{
 body {
     display: flex;
     flex-direction: column;
-    background-image: url("../images/oruzhie-devushka-soldat.jpg");
+    background-image: url("resources/images/oruzhie-devushka-soldat.jpg");
 }
 
 html, body, a{
@@ -130,6 +130,7 @@ ul{
     justify-content: center;
     padding: 4px;
     border: 1px solid #c2c4cd;
+    background-color: #c2c4cd;
 }
 
 .container{
@@ -164,7 +165,7 @@ ul{
 }
 
 .ref-li:hover {
-    background-color: #c2c4cd;
+    background-color: #96979e;
 }
 
 .add-item, .back {

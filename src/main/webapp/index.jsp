@@ -6,6 +6,12 @@
     <meta charset="UTF-8">
     <title>Пушкопедия</title>
     <link href="resources/styles/styles.css" type="text/css" rel="stylesheet">
+    
+    <style>
+        <%@include file="resources/styles/styles.css"%>
+    </style>
+
+
 </head>
 <body>
 <div style="display: inline">
@@ -14,7 +20,7 @@
             <div>
                 <ul class="panel">
                     <li class="logo">
-                        <a href="/index">LETHAL WEAPON</a>
+                        <a href="/">LETHAL WEAPON</a>
                     </li>
                     <li class="search">
                         <form method="GET" action="/search">
