@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" language="java" %>
 <html>
 <head>
 </head>
@@ -13,7 +13,7 @@
             <li class="item">
                 <a href="/show_accessory?id=${accessory.accessoryId}">
                     <div class="item-template" align="center">
-                        <img src="${accessory.pictureURL}" width="200" height="200" alt="Нет изображения">
+                        <img src="${accessory.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="200" height="200" alt="Нет изображения">
                         <span class="item-title">${accessory.name}</span>
                     </div>
                 </a>

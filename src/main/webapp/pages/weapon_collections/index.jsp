@@ -13,7 +13,7 @@
             <li class="item">
                 <a href="/show_weapon_collection?id=${weaponCollection.collectionId}">
                     <div align="center">
-                        <img src="${weaponCollection.pictureURL}" width="200" height="200" alt="Нет изображения">
+                        <img src="${weaponCollection.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="200" height="200" alt="Нет изображения">
                         <span class="item-title">${weaponCollection.name}</span>
                     </div>
                 </a>

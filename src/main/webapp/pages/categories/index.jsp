@@ -21,7 +21,7 @@
             <li class="item">
                 <a href="/show_category?id=${category.categoryId}">
                     <div align="center">
-                        <img src="${category.pictureURL}" width="200" height="200" alt="Нет изображения">
+                        <img src="${category.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="200" height="200" alt="Нет изображения">
                         <span class="item-title">${category.name}</span>
                     </div>
                 </a>

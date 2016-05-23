@@ -72,7 +72,11 @@ public class AccessoriesDAO {
     public int insert(Accessory accessory) {
         int id = 0;
         try {
-            PreparedStatement preparedStatement = MyConnection.getSimpleConnection().prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
+            Connection connection = MyConnection.getSimpleConnection();
+            Statement statement = connection.createStatement();
+            statement.executeQuery("SET NAMES 'utf8'");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, accessory.getName());
             preparedStatement.setString(2, accessory.getDescription());

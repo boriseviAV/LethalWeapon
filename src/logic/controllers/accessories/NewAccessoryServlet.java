@@ -74,7 +74,13 @@ public class NewAccessoryServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         String name = request.getParameter("name");
+
+        System.out.println(name);
+
         String description = request.getParameter("description");
 
         String pathToImage = "";

@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public class SearchDAO {
-    private static final String GET_BY_STRING = "SELECT * FROM lethal_weapon.weapons WHERE model_name LIKE '%' + ? + '%';";
+    private static final String GET_BY_STRING = "SELECT * FROM lethal_weapon.weapons WHERE model_name LIKE ?;";
 
     public List<Weapon> getResults(String phrase) {
 
@@ -18,7 +18,7 @@ public class SearchDAO {
         try {
             PreparedStatement preparedStatement = MyConnection.getSimpleConnection().prepareStatement(GET_BY_STRING);
 
-            preparedStatement.setString(1, phrase);
+            preparedStatement.setString(1, "%" + phrase + "%");
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {

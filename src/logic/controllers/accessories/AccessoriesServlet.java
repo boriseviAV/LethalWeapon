@@ -108,4 +108,5 @@ public class AccessoriesServlet extends HttpServlet {
 
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
+
 }
