@@ -2,6 +2,7 @@ package logic.controllers.weapons;
 
 import logic.DAO.WeaponsDAO;
 import logic.models.Weapon;
+import logic.upload.FileUploading;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -9,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 import java.io.*;
 
 @MultipartConfig(
@@ -20,60 +20,10 @@ import java.io.*;
 @WebServlet(value = "/new_weapon")
 public class NewWeaponServlet extends HttpServlet {
 
-    private static final String imagesFolder = "resources/images/";
-
-    private String getFileName(final Part part) {
-        for (String content : part.getHeader("content-disposition").split(";")) {
-            if (content.trim().startsWith("filename")) {
-                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
-            }
-        }
-        return null;
-    }
-
-    private String loadFile(HttpServletRequest request) throws ServletException, IOException {
-        final Part filePart = request.getPart("picture");
-        final String fileName = getFileName(filePart);
-
-        OutputStream out = null;
-        InputStream filecontent = null;
-
-        String pictureURL = imagesFolder + fileName;
-
-        String fullPictureURL = getServletContext().getRealPath("") + pictureURL;
-
-        try {
-            out = new FileOutputStream(new File(fullPictureURL));
-
-            filecontent = filePart.getInputStream();
-
-            int read;
-            final byte[] bytes = new byte[1024];
-
-            while ((read = filecontent.read(bytes)) != -1) {
-                out.write(bytes, 0, read);
-            }
-
-        } catch (FileNotFoundException fne) {
-            System.err.println("Image not found!");
-        } finally {
-            try {
-                if (out != null) {
-                    out.close();
-                }
-                if (filecontent != null) {
-                    filecontent.close();
-                }
-            }
-            catch (IOException e) {
-                System.err.println("Streams closing error!");
-            }
-        }
-
-        return pictureURL;
-    }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
+
         String modelName = request.getParameter("model_name");
         String holdingWay = request.getParameter("holding_way");
         String country = request.getParameter("country");
@@ -97,7 +47,7 @@ public class NewWeaponServlet extends HttpServlet {
 
         String pathToImage = "";
         try {
-            pathToImage = loadFile(request);
+            pathToImage = FileUploading.loadFile(request);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ServletException e) {

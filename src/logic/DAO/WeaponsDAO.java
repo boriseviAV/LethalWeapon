@@ -125,7 +125,7 @@ public class WeaponsDAO {
     public int insert(Weapon weapon) {
         int id = 0;
         try {
-            PreparedStatement preparedStatement = MyConnection.getSimpleConnection().prepareStatement(SQL_INSERT);
+            PreparedStatement preparedStatement = MyConnection.getSimpleConnection().prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, weapon.getModelName());
             preparedStatement.setString(2, weapon.getHoldingWay());

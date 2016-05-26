@@ -8,7 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
 </head>
 <body>
     <div class="add">
@@ -22,7 +21,7 @@
             </div>
 
             <div align="center">
-                <table class="parameters" border="1" cellspacing="0">
+                <table bgcolor="#01A9DB" class="parameters" border="1" cellspacing="0">
                     <tr class="param">
                         <td width="30%" align="right" class="param">Название:</td>
                         <td width="70%" align="center" class="param">${requestScope.accessory.name}</td>

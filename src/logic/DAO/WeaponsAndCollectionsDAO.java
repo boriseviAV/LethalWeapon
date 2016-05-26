@@ -5,6 +5,7 @@ import logic.connection.MyConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class WeaponsAndCollectionsDAO {
 
@@ -15,7 +16,7 @@ public class WeaponsAndCollectionsDAO {
     public int insert(int weaponId, int collectionId) {
         int id = 0;
         try {
-            PreparedStatement preparedStatement = MyConnection.getSimpleConnection().prepareStatement(SQL_INSERT);
+            PreparedStatement preparedStatement = MyConnection.getSimpleConnection().prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, weaponId);
             preparedStatement.setInt(2, collectionId);
 
@@ -25,8 +26,9 @@ public class WeaponsAndCollectionsDAO {
 
             ResultSet rs = exStat.executeQuery();
 
-            if (!rs.next())
+            if (!rs.next()) {
                 id = preparedStatement.executeUpdate();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

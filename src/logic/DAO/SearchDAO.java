@@ -12,7 +12,6 @@ public class SearchDAO {
     private static final String GET_BY_STRING = "SELECT * FROM lethal_weapon.weapons WHERE model_name LIKE ?;";
 
     public List<Weapon> getResults(String phrase) {
-
         List<Weapon> result = new ArrayList<Weapon>();
 
         try {

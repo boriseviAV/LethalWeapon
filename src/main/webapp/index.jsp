@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>Пушкопедия</title>
     <link href="resources/styles/styles.css" type="text/css" rel="stylesheet">
     
@@ -26,8 +25,8 @@
                         <a href="/">LETHAL WEAPON</a>
                     </li>
                     <li class="search">
-                        <form method="GET" action="/search">
-                            <input name="text" type="text" class="text-search" placeholder="Введите фразу для поиска...">
+                        <form method="POST" action="/search">
+                            <input name="phrase" type="text" class="text-search" placeholder="Введите фразу для поиска...">
                             <input type="submit" class="button-search" value="Поиск">
                         </form>
                     </li>

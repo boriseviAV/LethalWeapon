@@ -38,6 +38,8 @@ public class CategoriesServlet extends HttpServlet {
         request.setAttribute("categoriesList", categoriesList);
         request.setAttribute("pageName", "pages/categories/index.jsp");
 
+
+
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }

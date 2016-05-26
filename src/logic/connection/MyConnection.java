@@ -9,7 +9,7 @@ public class MyConnection {
     private static Connection connection;
 
     public static Connection getSimpleConnection() {
-        String DB_CONN_STRING = "jdbc:mysql://localhost:3306/lethal_weapon?autoReconnect=true&useSSL=false";
+        String DB_CONN_STRING = "jdbc:mysql://localhost:3306/lethal_weapon?autoReconnect=true&useSSL=false&characterEncoding=UTF-8";
         String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
         String USER_NAME = "root";
         String PASSWORD = "artegor";

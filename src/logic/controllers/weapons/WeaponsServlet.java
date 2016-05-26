@@ -18,8 +18,6 @@ public class WeaponsServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int itemsInPortion = 6;
-
         WeaponsDAO weaponsDAO = new WeaponsDAO();
         List<Weapon> weaponsList = weaponsDAO.getAllWeapons();
 
@@ -28,9 +26,6 @@ public class WeaponsServlet extends HttpServlet {
         request.setAttribute("back", "/categories");
         request.setAttribute("weaponsList", weaponsList);
         request.setAttribute("weaponsListSize", weaponsList.size());
-        request.setAttribute("weaponsListPortionsNumber", weaponsList.size() / itemsInPortion);
-        request.setAttribute("weaponsListRestNumber", weaponsList.size() % itemsInPortion);
-        request.setAttribute("itemsInPortion", itemsInPortion);
 
         request.setAttribute("pageName", "pages/weapons/index.jsp");
 
