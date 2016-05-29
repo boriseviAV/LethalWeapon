@@ -5,8 +5,9 @@
 </head>
 <body>
     <ul class="container">
-        <c:choose>
-            <c:when test="${requestScope.weaponsList != null}">
+        <c:if test="${requestScope.weaponsList == null or empty requestScope.weaponsList}">
+            <div class="empty-list">Результаты не найдены</div>
+        </c:if>
                 <c:forEach var="weapon" items="${requestScope.weaponsList}">
                     <li class="item">
                         <label style="cursor: pointer">
@@ -32,11 +33,7 @@
                         </label>
                     </li>
                 </c:forEach>
-            </c:when>
-            <c:when test="${requestScope.weaponsList == null}">
-                <div class="empty-list">Результаты не найдены</div>
-            </c:when>
-        </c:choose>
+
 
     </ul>
 </body>

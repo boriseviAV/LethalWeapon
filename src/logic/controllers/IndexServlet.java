@@ -15,6 +15,7 @@ public class IndexServlet extends javax.servlet.http.HttpServlet {
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         String phrase = (String)request.getSession().getAttribute("phrase");
+        request.getSession().removeAttribute("phrase");
 
         if (phrase != null) {
             SearchDAO searchDAO = new SearchDAO();

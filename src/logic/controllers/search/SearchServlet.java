@@ -1,8 +1,5 @@
 package logic.controllers.search;
 
-import logic.DAO.SearchDAO;
-import logic.models.Weapon;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/search")
 public class SearchServlet extends HttpServlet {
@@ -21,9 +17,13 @@ public class SearchServlet extends HttpServlet {
 
         String phrase = request.getParameter("phrase");
 
-        HttpSession session = request.getSession();
-        session.setAttribute("phrase", phrase);
-        response.sendRedirect("/");
+        if (phrase != null && !phrase.equals("")) {
+            HttpSession session = request.getSession();
+            session.setAttribute("phrase", phrase);
+            response.sendRedirect("/");
+        }
+        else
+            response.sendRedirect(request.getHeader("Referer"));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
