@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: sined
-  Date: 15/05/16
-  Time: 10:31 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -17,7 +10,7 @@
     <ul class="container">
         <li class="item-show">
             <div class="avatar" align="center">
-                <img src="${requestScope.accessory.pictureURL}" width="80%" height="100%" alt="Нет изображения">
+                <img src="${requestScope.cacheDir}${requestScope.accessory.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="600" height="330" alt="Нет изображения">
             </div>
 
             <div align="center">

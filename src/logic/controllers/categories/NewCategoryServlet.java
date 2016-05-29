@@ -1,6 +1,7 @@
 package logic.controllers.categories;
 
 import logic.DAO.CategoriesDAO;
+import logic.controllers.InitServlet;
 import logic.models.Category;
 import logic.upload.FileUploading;
 
@@ -18,7 +19,7 @@ import java.io.*;
         maxRequestSize = 1024 * 1024 * 50
 )
 @WebServlet(value = "/new_category")
-public class NewCategoryServlet extends HttpServlet {
+public class NewCategoryServlet extends InitServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");

@@ -11,12 +11,15 @@
     </div>
 
     <ul class="container">
+        <c:if test="${empty requestScope.weaponCollectionsList}">
+            <div class="empty-list">Список сборников пуст</div>
+        </c:if>
         <c:forEach var="weaponCollection" items="${requestScope.weaponCollectionsList}">
             <li class="item">
                 <a href="/show_weapon_collection?id=${weaponCollection.collectionId}">
                     <div align="center">
-                        <img src="${weaponCollection.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="200" height="200" alt="Нет изображения">
-                        <span class="item-title">${weaponCollection.name}</span>
+                        <img src="${requestScope.cacheDir}${weaponCollection.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="200" height="200" alt="Нет изображения">
+                        <div class="item-name">${weaponCollection.name}</div>
                     </div>
                 </a>
             </li>

@@ -1,18 +1,20 @@
 package logic.controllers.categories;
 
 import logic.DAO.WeaponsDAO;
+import logic.controllers.InitServlet;
 import logic.models.Weapon;
+import logic.upload.FileCopying;
+import logic.upload.FileWork;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
 @WebServlet(value = "/show_category")
-public class ShowCategoryServlet extends HttpServlet {
+public class ShowCategoryServlet extends InitServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -23,10 +25,14 @@ public class ShowCategoryServlet extends HttpServlet {
         WeaponsDAO weaponsDAO = new WeaponsDAO();
         List<Weapon> weaponsList = weaponsDAO.getWeaponsByCategoryId(id);
 
+        for (Weapon weapon : weaponsList)
+            FileCopying.cache(weapon.getPictureURL());
+
         String prevPageURL = request.getHeader("Referer");
 
         boolean addToCol = prevPageURL.contains("add_weapons");
 
+        request.setAttribute("cacheDir", FileWork.cacheDir);
         request.setAttribute("categoryId", id);
         request.setAttribute("addToCol", addToCol);
         request.setAttribute("weaponsList", weaponsList);

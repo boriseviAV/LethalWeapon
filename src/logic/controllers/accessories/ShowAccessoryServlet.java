@@ -1,7 +1,10 @@
 package logic.controllers.accessories;
 
 import logic.DAO.AccessoriesDAO;
+import logic.controllers.InitServlet;
 import logic.models.Accessory;
+import logic.upload.FileCopying;
+import logic.upload.FileWork;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(value = "/show_accessory")
-public class ShowAccessoryServlet extends HttpServlet {
+public class ShowAccessoryServlet extends InitServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -22,6 +25,9 @@ public class ShowAccessoryServlet extends HttpServlet {
         AccessoriesDAO accessoriesDAO = new AccessoriesDAO();
         Accessory accessory = accessoriesDAO.getAccessoryById(id);
 
+        FileCopying.cache(accessory.getPictureURL());
+
+        request.setAttribute("cacheDir", FileWork.cacheDir);
         request.setAttribute("pageName", "pages/accessories/show.jsp");
         request.setAttribute("accessory", accessory);
 

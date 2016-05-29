@@ -36,10 +36,10 @@
                             <c:choose>
                                 <c:when test="${sessionScope.currentUser == null}">
                                     <li class="signin">
-                                        <a href="/login">ВХОД</a>
+                                        <a href="/login" class="reg-btn">ВХОД</a>
                                     </li>
                                     <li class="signup">
-                                        <a href="/signup">РЕГИСТРАЦИЯ</a>
+                                        <a href="/signup" class="reg-btn">РЕГИСТРАЦИЯ</a>
                                     </li>
                                 </c:when>
                                 <c:when test="${sessionScope.currentUser != null}">

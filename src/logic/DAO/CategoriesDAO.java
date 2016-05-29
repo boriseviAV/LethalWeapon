@@ -9,11 +9,10 @@ import java.util.List;
 
 public class CategoriesDAO {
     private static final String SQL_INSERT = "INSERT INTO categories(name, picture_url) VALUES(?, ?);";
-    private static final String GET_BY_ID = "SELECT * FROM lethal_weapon.categories WHERE category_id = ?;";
 
     public List<Category> getAllCategories() {
         List<Category> result = new ArrayList<Category>();
-        String query = "SELECT * FROM lethal_weapon.categories;";
+        String query = "SELECT * FROM categories;";
         ResultSet rs = null;
         Statement statement = null;
 
@@ -48,8 +47,9 @@ public class CategoriesDAO {
     }
 
     public void deleteAll() {
-        String query1 = "DELETE FROM weapons;";
-        String query2 = "DELETE FROM categories;";
+        String query1 = "DELETE FROM weapons_and_collections";
+        String query2 = "DELETE FROM weapons;";
+        String query3 = "DELETE FROM categories;";
         Statement statement = null;
 
         try {
@@ -57,6 +57,7 @@ public class CategoriesDAO {
             statement = connection.createStatement();
             statement.execute(query1);
             statement.execute(query2);
+            statement.execute(query3);
         } catch(SQLException e) {
             e.printStackTrace();
         } finally {
@@ -68,26 +69,6 @@ public class CategoriesDAO {
                 e.printStackTrace();
             }
         }
-    }
-
-    public Category getCategoryById(int id) {
-        PreparedStatement preparedStatement;
-        Category category = null;
-        try {
-            preparedStatement = MyConnection.getSimpleConnection().prepareStatement(GET_BY_ID);
-            preparedStatement.setInt(1, id);
-            ResultSet rs = preparedStatement.executeQuery();
-
-            if (rs.next()) {
-                category = new Category(
-                        rs.getString(1),
-                        rs.getString(2)
-                );
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return category;
     }
 
     public int insert(Category category) {

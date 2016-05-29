@@ -15,50 +15,6 @@ public class WeaponsDAO {
     private static final String GET_BY_ID = "SELECT * FROM lethal_weapon.weapons WHERE weapon_id = ?;";
     private static final String GET_BY_CATEGORY_ID = "SELECT * FROM lethal_weapon.weapons WHERE category_id = ?;";
 
-    public List<Weapon> getAllWeapons() {
-        List<Weapon> result = new ArrayList<Weapon>();
-        String query = "SELECT * FROM lethal_weapon.weapons;";
-        ResultSet rs = null;
-        Statement statement = null;
-
-        try {
-            Connection connection = MyConnection.getSimpleConnection();
-            statement = connection.createStatement();
-            rs = statement.executeQuery(query);
-
-            while (rs.next()) {
-                result.add(
-                        new Weapon(
-                                rs.getInt(1),
-                                rs.getString(2),
-                                rs.getString(3),
-                                rs.getString(4),
-                                rs.getString(5),
-                                rs.getString(6),
-                                rs.getInt(7),
-                                rs.getBoolean(8),
-                                rs.getString(9),
-                                rs.getInt(10),
-                                rs.getString(11)
-                        )
-                );
-            }
-        } catch(SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null)
-                    rs.close();
-                if (statement != null)
-                    statement.close();
-            }
-            catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return result;
-    }
-
     public List<Weapon> getWeaponsByCategoryId(int id) {
         PreparedStatement preparedStatement;
         List<Weapon> result = new ArrayList<Weapon>();

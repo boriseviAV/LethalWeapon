@@ -58,9 +58,8 @@ ul{
 
 .search {
     width: 500px;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
+    padding-top: 15px;
+    padding-left: 20px;
 }
 
 .search > input[type = "text"], .search > input[type = "button"]{
@@ -153,8 +152,8 @@ ul{
     text-align: center;
 }
 
-.item-title {
-    color: black;
+.item-template {
+    width: 200px;
 }
 
 .ref-li > a {
@@ -253,6 +252,7 @@ ul{
     width: 100%;
     border: 1px solid black;
     text-align: left;
+    margin-bottom: 30px;
 }
 
 .param {
@@ -272,4 +272,30 @@ ul{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.empty-list {
+    background-color: darkcyan;
+    color: lawngreen;
+    width: 80%;
+    font-family: 'Open Sans', "Leelawadee UI", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    height: 25px;
+    text-align: center;
+}
+
+.reg-btn {
+    background-color: #8e97e1;
+    border-radius: 4px;
+    padding: 5px;
+    color: cornsilk;
+}
+
+.item-name {
+    background-color: mediumseagreen;
+    color: whitesmoke;
+    width: 100%;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }

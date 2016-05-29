@@ -2,18 +2,20 @@ package logic.controllers.weaponCollections;
 
 import logic.DAO.CategoriesDAO;
 import logic.DAO.WeaponsAndCollectionsDAO;
+import logic.controllers.InitServlet;
 import logic.models.Category;
+import logic.upload.FileCopying;
+import logic.upload.FileWork;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
 @WebServlet(value = "/add_weapons")
-public class AddWeaponsServlet extends HttpServlet {
+public class AddWeaponsServlet extends InitServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -39,6 +41,10 @@ public class AddWeaponsServlet extends HttpServlet {
 
         int collectionId = Integer.parseInt(request.getParameter("to"));
 
+        for (Category category : categoriesList)
+            FileCopying.cache(category.getPictureURL());
+
+        request.setAttribute("cacheDir", FileWork.cacheDir);
         request.setAttribute("collectionId", collectionId);
         request.setAttribute("addToCol", true);
         request.setAttribute("back", "/categories");

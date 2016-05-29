@@ -11,7 +11,7 @@
     <ul class="container">
         <li class="item-show">
             <div class="avatar" align="center">
-                <img src="${requestScope.weapon.pictureURL}" width="70%" height="100%" alt="Нет изображения">
+                <img src="${requestScope.cacheDir}${requestScope.weapon.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="600" height="330" alt="Нет изображения">
             </div>
 
             <div align="center">
@@ -56,11 +56,14 @@
         </li>
         <li class="item-show">
             <ul class="container">
+                <c:if test="${empty requestScope.weaponsCollectionsList}">
+                    <div class="empty-list">Список сборников пуст</div>
+                </c:if>
                 <c:forEach var="weaponCollection" items="${requestScope.weaponCollectionsList}">
                     <li class="item">
                         <a href="/show_weapon_collection?id=${weaponCollection.collectionId}">
                             <div align="center">
-                                <img src="${weaponCollection.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="200" height="200" alt="Нет изображения">
+                                <img src="${requestScope.cacheDir}${weaponCollection.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="200" height="200" alt="Нет изображения">
                                 <span class="item-title">${weaponCollection.name}</span>
                             </div>
                         </a>

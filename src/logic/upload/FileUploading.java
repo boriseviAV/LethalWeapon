@@ -5,9 +5,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 import java.io.*;
 
-public class FileUploading {
+public class FileUploading implements FileWork {
 
-    private static final String imagesFolder = "resources/images/";
+    static {
+        File uploadedImagesFolder = new File(sourceDir);
+        if (!uploadedImagesFolder.exists()) {
+            uploadedImagesFolder.mkdir();
+        }
+    }
 
     private static String getFileName(final Part part) {
         for (String content : part.getHeader("content-disposition").split(";")) {
@@ -25,12 +30,10 @@ public class FileUploading {
         OutputStream out = null;
         InputStream filecontent = null;
 
-        String pictureURL = imagesFolder + fileName;
-
-        String fullPictureURL = request.getServletContext().getRealPath("") + pictureURL;
+        String pictureURL = sourceDir + fileName;
 
         try {
-            out = new FileOutputStream(new File(fullPictureURL));
+            out = new FileOutputStream(new File(pictureURL));
 
             filecontent = filePart.getInputStream();
 
@@ -57,6 +60,6 @@ public class FileUploading {
             }
         }
 
-        return pictureURL;
+        return fileName;
     }
 }
