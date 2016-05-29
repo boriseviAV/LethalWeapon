@@ -34,19 +34,15 @@ public class AddWeaponsServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int itemsInPortion = 6;
-
         CategoriesDAO categoriesDAO = new CategoriesDAO();
         List<Category> categoriesList = categoriesDAO.getAllCategories();
 
+        int collectionId = Integer.parseInt(request.getParameter("to"));
+
+        request.setAttribute("collectionId", collectionId);
         request.setAttribute("addToCol", true);
         request.setAttribute("back", "/categories");
         request.setAttribute("categoriesList", categoriesList);
-        request.setAttribute("categoriesListSize", categoriesList.size());
-        request.setAttribute("categoriesListPortionsNumber", categoriesList.size() / itemsInPortion);
-        request.setAttribute("categoriesListRestNumber", categoriesList.size() % itemsInPortion);
-        request.setAttribute("itemsInPortion", itemsInPortion);
-
         request.setAttribute("pageName", "pages/weapon_collections/add_weapons.jsp");
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }

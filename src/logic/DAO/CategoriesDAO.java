@@ -48,13 +48,15 @@ public class CategoriesDAO {
     }
 
     public void deleteAll() {
-        String query = "DELETE FROM lethal_weapon.categories;";
+        String query1 = "DELETE FROM weapons;";
+        String query2 = "DELETE FROM categories;";
         Statement statement = null;
 
         try {
             Connection connection = MyConnection.getSimpleConnection();
             statement = connection.createStatement();
-            statement.execute(query);
+            statement.execute(query1);
+            statement.execute(query2);
         } catch(SQLException e) {
             e.printStackTrace();
         } finally {

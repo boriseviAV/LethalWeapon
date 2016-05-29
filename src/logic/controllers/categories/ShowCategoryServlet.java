@@ -18,8 +18,6 @@ public class ShowCategoryServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int itemsInPortion = 6;
-
         int id = Integer.parseInt(request.getParameter("id"));
 
         WeaponsDAO weaponsDAO = new WeaponsDAO();
@@ -29,15 +27,13 @@ public class ShowCategoryServlet extends HttpServlet {
 
         boolean addToCol = prevPageURL.contains("add_weapons");
 
+        request.setAttribute("categoryId", id);
         request.setAttribute("addToCol", addToCol);
         request.setAttribute("weaponsList", weaponsList);
         request.setAttribute("back", "/categories");
         request.setAttribute("action", "/new_weapon");
         request.setAttribute("anchor", "Назад к Категориям");
         request.setAttribute("weaponsListSize", weaponsList.size());
-        request.setAttribute("weaponsListPortionsNumber", weaponsList.size() / itemsInPortion);
-        request.setAttribute("weaponsListRestNumber", weaponsList.size() % itemsInPortion);
-        request.setAttribute("itemsInPortion", itemsInPortion);
         request.setAttribute("pageName", "pages/categories/show.jsp");
 
         request.getRequestDispatcher("index.jsp").forward(request, response);

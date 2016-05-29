@@ -21,12 +21,24 @@
     <ul class="container">
         <c:forEach var="category" items="${requestScope.categoriesList}">
             <li class="item">
-                <a href="/show_category?id=${category.categoryId}">
-                    <div align="center">
-                        <img src="${category.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="200" height="200" alt="Нет изображения">
-                        <span class="item-title">${category.name}</span>
-                    </div>
-                </a>
+                <c:choose>
+                    <c:when test="${requestScope.addToCol == true}">
+                        <a href="/show_category?id=${category.categoryId}&to=${requestScope.collectionId}">
+                            <div align="center">
+                                <img src="${category.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="200" height="200" alt="Нет изображения">
+                                <span class="item-title">${category.name}</span>
+                            </div>
+                        </a>
+                    </c:when>
+                    <c:when test="${requestScope.addToCol == false}">
+                        <a href="/show_category?id=${category.categoryId}">
+                            <div align="center">
+                                <img src="${category.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="200" height="200" alt="Нет изображения">
+                                <span class="item-title">${category.name}</span>
+                            </div>
+                        </a>
+                    </c:when>
+                </c:choose>
             </li>
         </c:forEach>
     </ul>

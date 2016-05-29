@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Пушкопедия</title>
+    <title>Энциклопедия оружия</title>
     <link href="resources/styles/styles.css" type="text/css" rel="stylesheet">
     
     <style>

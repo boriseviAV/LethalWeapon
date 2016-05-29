@@ -5,7 +5,7 @@
 </head>
 <body>
     <div class="add">
-        <a class="back" href="/weapons">Назад к Списку оружия</a><br/>
+        <a class="back" href="${requestScope.back}">Назад к списку оружия</a><br/>
     </div>
 
     <ul class="container">
@@ -16,11 +16,6 @@
 
             <div align="center">
                 <table bgcolor="#01A9DB" class="parameters" border="1" cellspacing="0">
-                    <tr>
-                        <td colspan="2" class="font-1str">
-                            ${requestScope.weapon.modelName}
-                        </td>
-                    </tr>
                     <tr>
                         <td width="30%" align="right">Название модели:</td>
                         <td width="70%" align="center" class="info1">${requestScope.weapon.modelName}</td>
@@ -56,10 +51,10 @@
                 </table>
             </div>
         </li>
-        <li>
+        <li class="item-show">
             <span style="color: chocolate">Сборники, где встречается это оружие:</span>
         </li>
-        <li>
+        <li class="item-show">
             <ul class="container">
                 <c:forEach var="weaponCollection" items="${requestScope.weaponCollectionsList}">
                     <li class="item">

@@ -18,22 +18,18 @@ public class ShowWeaponCollectionServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        int itemsInPortion = 6;
+        int collectionId = Integer.parseInt(request.getParameter("id"));
 
         CollectionsDAO  collectionsDAO = new CollectionsDAO();
-        List<Weapon> weaponsList = collectionsDAO.getWeaponsByCollectionId(id);
+        List<Weapon> weaponsList = collectionsDAO.getWeaponsByCollectionId(collectionId);
 
-        request.setAttribute("collectionId", id);
+        request.setAttribute("collectionId", collectionId);
         request.setAttribute("action", "/add_weapons");
         request.setAttribute("anchor", "Назад к Сборникам");
         request.setAttribute("back", "/weapon_collections");
         request.setAttribute("addToCol", false);
         request.setAttribute("weaponsList", weaponsList);
         request.setAttribute("weaponsListSize", weaponsList.size());
-        request.setAttribute("weaponsListPortionsNumber", weaponsList.size() / itemsInPortion);
-        request.setAttribute("weaponsListRestNumber", weaponsList.size() % itemsInPortion);
-        request.setAttribute("itemsInPortion", itemsInPortion);
         request.setAttribute("pageName", "pages/weapon_collections/show.jsp");
 
         request.getRequestDispatcher("index.jsp").forward(request, response);

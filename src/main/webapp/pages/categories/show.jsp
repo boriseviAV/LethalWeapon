@@ -6,7 +6,7 @@
 <body>
     <c:choose>
         <c:when test="${requestScope.addToCol == true}">
-            <form action="/add_weapons?to=${param.id}" method="POST">
+            <form action="/add_weapons?to=${param.to}" method="POST">
                 <jsp:include page="/pages/weapons/index.jsp"/>
             </form>
         </c:when>
