@@ -37,6 +37,7 @@ public class ShowWeaponServlet extends InitServlet {
 
         String prevPageURL = request.getHeader("Referer");
 
+        request.setAttribute("pageTitle", "Параметры оружия");
         request.setAttribute("cacheDir", FileWork.cacheDir);
         request.setAttribute("back", prevPageURL);
         request.setAttribute("pageName", "pages/weapons/show.jsp");

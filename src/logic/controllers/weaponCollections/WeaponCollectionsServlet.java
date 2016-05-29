@@ -38,6 +38,7 @@ public class WeaponCollectionsServlet extends InitServlet {
         for (WeaponCollection collection : weaponCollectionsList)
             FileCopying.cache(collection.getPictureURL());
 
+        request.setAttribute("pageTitle", "Сборники");
         request.setAttribute("cacheDir", FileWork.cacheDir);
         request.setAttribute("weaponCollectionsList", weaponCollectionsList);
         request.setAttribute("pageName", "pages/weapon_collections/index.jsp");

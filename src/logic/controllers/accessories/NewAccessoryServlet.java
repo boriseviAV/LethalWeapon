@@ -48,6 +48,7 @@ public class NewAccessoryServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("pageTitle", "Новый аксессуар");
         request.setAttribute("pageName", "pages/accessories/new.jsp");
 
         request.getRequestDispatcher("index.jsp").forward(request, response);

@@ -32,6 +32,7 @@ public class ShowCategoryServlet extends InitServlet {
 
         boolean addToCol = prevPageURL.contains("add_weapons");
 
+        request.setAttribute("pageTitle", "Оружия категории");
         request.setAttribute("cacheDir", FileWork.cacheDir);
         request.setAttribute("categoryId", id);
         request.setAttribute("addToCol", addToCol);

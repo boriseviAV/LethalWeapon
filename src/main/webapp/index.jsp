@@ -3,9 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Энциклопедия оружия</title>
-    <link href="resources/styles/styles.css" type="text/css" rel="stylesheet">
-    
+    <title>${requestScope.pageTitle}</title>
+    <link rel="shortcut icon" href="resources/images/icon.png" />
     <style>
         <%@include file="resources/styles/styles.css"%>
     </style>

@@ -28,6 +28,7 @@ public class ShowWeaponCollectionServlet extends InitServlet {
         for (Weapon weapon : weaponsList)
             FileCopying.cache(weapon.getPictureURL());
 
+        request.setAttribute("pageTitle", "Содержимое сборника");
         request.setAttribute("cacheDir", FileWork.cacheDir);
         request.setAttribute("collectionId", collectionId);
         request.setAttribute("action", "/add_weapons");

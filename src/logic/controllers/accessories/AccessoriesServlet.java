@@ -59,6 +59,7 @@ public class AccessoriesServlet extends InitServlet {
         for (Accessory accessory : accessoriesList)
             FileCopying.cache(accessory.getPictureURL());
 
+        request.setAttribute("pageTitle", "Аксессуары");
         request.setAttribute("cacheDir", FileWork.cacheDir);
         request.setAttribute("accessoriesList", accessoriesList);
         request.setAttribute("pageName", "pages/accessories/index.jsp");

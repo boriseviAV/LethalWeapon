@@ -31,6 +31,7 @@ public class IndexServlet extends javax.servlet.http.HttpServlet {
         else
             request.setAttribute("pageName", "home.jsp");
 
+        request.setAttribute("pageTitle", "Энциклопедия оружия");
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }

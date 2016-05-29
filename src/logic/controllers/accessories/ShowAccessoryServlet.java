@@ -27,6 +27,7 @@ public class ShowAccessoryServlet extends InitServlet {
 
         FileCopying.cache(accessory.getPictureURL());
 
+        request.setAttribute("pageTitle", "Параметры");
         request.setAttribute("cacheDir", FileWork.cacheDir);
         request.setAttribute("pageName", "pages/accessories/show.jsp");
         request.setAttribute("accessory", accessory);

@@ -47,6 +47,7 @@ public class NewWeaponCollectionServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("pageTitle", "Новый сборник");
         request.setAttribute("pageName", "pages/weapon_collections/new.jsp");
 
         request.getRequestDispatcher("index.jsp").forward(request, response);

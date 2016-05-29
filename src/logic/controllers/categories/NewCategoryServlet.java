@@ -48,6 +48,7 @@ public class NewCategoryServlet extends InitServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("pageTitle", "Новая категория");
         request.setAttribute("pageName", "pages/categories/new.jsp");
 
         request.getRequestDispatcher("index.jsp").forward(request, response);

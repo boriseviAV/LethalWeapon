@@ -30,6 +30,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("pageTitle", "Вход");
         request.setAttribute("pageName", request.getRequestURI() + ".jsp");
 
         request.getRequestDispatcher("index.jsp").forward(request, response);

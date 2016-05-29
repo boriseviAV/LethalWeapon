@@ -39,6 +39,7 @@ public class CategoriesServlet extends InitServlet {
             FileCopying.cache(category.getPictureURL());
 
         Object addToColValue = request.getAttribute("addToCol");
+        request.setAttribute("pageTitle", "Категории");
         request.setAttribute("cacheDir", FileWork.cacheDir);
         request.setAttribute("addToCol", addToColValue == null ? false : addToColValue);
         request.setAttribute("back", "/categories");

@@ -44,6 +44,7 @@ public class AddWeaponsServlet extends InitServlet {
         for (Category category : categoriesList)
             FileCopying.cache(category.getPictureURL());
 
+        request.setAttribute("pageTitle", "Добавить в сборник");
         request.setAttribute("cacheDir", FileWork.cacheDir);
         request.setAttribute("collectionId", collectionId);
         request.setAttribute("addToCol", true);
