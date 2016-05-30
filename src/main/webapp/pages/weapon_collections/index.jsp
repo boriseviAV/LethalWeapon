@@ -5,7 +5,7 @@
 </head>
 <body>
     <div class="add">
-        <a class="add-item" href="/new_weapon_collection">Добавить сборник</a>
+        <a class="add-item" href="/new_weapon_collection"><div>Добавить сборник</div></a>
         <a class="add-item" href="/weapon_collections?method=delete">Очистить</a>
         <br/>
     </div>
@@ -17,7 +17,7 @@
         <c:forEach var="weaponCollection" items="${requestScope.weaponCollectionsList}">
             <li class="item">
                 <a href="/show_weapon_collection?id=${weaponCollection.collectionId}">
-                    <div align="center">
+                    <div class="item-template" align="center">
                         <img src="${requestScope.cacheDir}${weaponCollection.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="200" height="200" alt="Нет изображения">
                         <div class="item-name">${weaponCollection.name}</div>
                     </div>

@@ -10,11 +10,11 @@
     <ul class="container">
         <li class="item-show">
             <div class="avatar" align="center">
-                <img src="${requestScope.cacheDir}${requestScope.accessory.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="600" height="330" alt="Нет изображения">
+                <img class="avatar-image" src="${requestScope.cacheDir}${requestScope.accessory.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="600" height="330" alt="Нет изображения">
             </div>
 
             <div align="center">
-                <table bgcolor="#01A9DB" class="parameters" border="1" cellspacing="0">
+                <table bgcolor="#253441" class="parameters" border="1" cellspacing="0">
                     <tr class="param">
                         <td width="30%" align="right" class="param">Название:</td>
                         <td width="70%" align="center" class="param">${requestScope.accessory.name}</td>

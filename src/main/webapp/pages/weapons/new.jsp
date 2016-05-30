@@ -8,7 +8,7 @@
             <form style="width: 700px" class="reg" method="POST" action="/new_weapon?to=${param.to}" enctype="multipart/form-data">
                 <div>
                     <span style="float: left; width: 49%">
-                        Вид:
+                        Название модели:
                         <label>
                             <input type="text" name="model_name" class="text_field">
                         </label>

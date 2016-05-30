@@ -28,7 +28,7 @@
                 <c:choose>
                     <c:when test="${requestScope.addToCol == true}">
                         <a href="/show_category?id=${category.categoryId}&to=${requestScope.collectionId}">
-                            <div align="center">
+                            <div class="item-template" align="center">
                                 <img src="${requestScope.cacheDir}${category.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="200" height="200" alt="Нет изображения">
                                 <div class="item-name">${category.name}</div>
                             </div>
@@ -36,7 +36,7 @@
                     </c:when>
                     <c:when test="${requestScope.addToCol == false}">
                         <a href="/show_category?id=${category.categoryId}">
-                            <div align="center">
+                            <div class="item-template" align="center">
                                 <img src="${requestScope.cacheDir}${category.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="200" height="200" alt="Нет изображения">
                                 <div class="item-name">${category.name}</div>
                             </div>

@@ -11,11 +11,11 @@
     <ul class="container">
         <li class="item-show">
             <div class="avatar" align="center">
-                <img src="${requestScope.cacheDir}${requestScope.weapon.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="600" height="330" alt="Нет изображения">
+                <img class="avatar-image" src="${requestScope.cacheDir}${requestScope.weapon.pictureURL}" onerror="this.src='resources/images/no_image.jpg'" width="600" height="330" alt="Нет изображения">
             </div>
 
             <div align="center">
-                <table bgcolor="#01A9DB" class="parameters" border="1" cellspacing="0">
+                <table bgcolor="#253441" class="parameters" border="1" cellspacing="0">
                     <tr>
                         <td width="30%" align="right">Название модели:</td>
                         <td width="70%" align="center" class="info1">${requestScope.weapon.modelName}</td>
@@ -37,7 +37,7 @@
                         <td align="center" class="info5">${requestScope.weapon.caliber}</td>
                     </tr>
                     <tr>
-                        <td align="right">Боепитание:</td>
+                        <td align="right">Вместимость магазина (обоймы):</td>
                         <td align="center" class="info6">${requestScope.weapon.ammoNumber}</td>
                     </tr>
                     <tr>

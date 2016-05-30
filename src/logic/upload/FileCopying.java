@@ -14,8 +14,11 @@ public class FileCopying implements FileWork {
 
             if (!file.exists()) {
                 if (file.mkdir())
-                    toDir = file.getAbsolutePath() + "/";
+                    toDir = file.getAbsolutePath() + File.separator;
             }
+            else
+                if (toDir == null)
+                    toDir = file.getAbsolutePath() + File.separator;
             isCacheCreated = true;
         }
     }
